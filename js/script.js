@@ -10,6 +10,12 @@ function makeRequest (fromCurrency, toCurrency, inputValue) {
   if (isNaN(amount)) {
     amount = 0;
   }
+
+  if (fromCurrency === toCurrency) {
+    outputResultElement.value = amount.toFixed(2);
+    return;
+  }
+
   fetch(`${api}/v2/rate/${fromCurrency}/${toCurrency}`)
       .then((response) => response.json())
       .then((data) => {
