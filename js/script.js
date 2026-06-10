@@ -18,3 +18,16 @@ inputAmountElement.addEventListener('keydown', (event) => {
       });
   }
 });
+
+selectFromElement.addEventListener('change', () => {
+  const fromCurrency = selectFromElement.value;
+  const toCurrency = selectToElement.value;
+  const inputValue = inputAmountElement.value;
+
+  fetch(`${api}/v2/rate/${fromCurrency}/${toCurrency}`)
+    .then((response) => response.json())
+    .then((data) => {
+      let result = (inputValue * data.rate).toFixed(2);
+      outputResultElement.value = result;
+    });
+});
