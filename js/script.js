@@ -5,10 +5,15 @@ const outputResultElement = document.querySelector('.currency__output');
 const api = "https://api.frankfurter.dev";
 
 function makeRequest (fromCurrency, toCurrency, inputValue) {
+  let amount = parseFloat(inputValue);
+  
+  if (isNaN(amount)) {
+    amount = 0;
+  }
   fetch(`${api}/v2/rate/${fromCurrency}/${toCurrency}`)
       .then((response) => response.json())
       .then((data) => {
-        let result = (inputValue * data.rate).toFixed(2);
+        let result = (amount * data.rate).toFixed(2);
         outputResultElement.value = result;
       })
       .catch((error) => {
