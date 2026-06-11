@@ -25,7 +25,7 @@
     --color-select: #343434;
     --color-border: #959595;
     --color-swap: #343434;
-    --color-text-active: #FFFFFF;
+    --color-text-white: #FFFFFF;
     --color-button: #659CA3;
 }
 
@@ -74,6 +74,10 @@ h1, h2, h3, h4, h5, h6 {
     background-color: rgb(99, 81, 238);
 }
 
+.darkmode .button:hover {
+    background-color: #72b4bd;
+}
+
 .currency-converter {
     display: flex;
     justify-content: center;
@@ -90,6 +94,10 @@ h1, h2, h3, h4, h5, h6 {
     background-color: var(--color-converter);
     border-radius: 8px;
     box-shadow: 9px 7px 7px -1px rgba(176, 176, 176, 0.3);
+}
+
+.darkmode .currency__wrapper {
+    box-shadow: 9px 7px 7px -1px rgba(0, 0, 0, 0.3);
 }
 
 .currency__title {
@@ -118,6 +126,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .currency__input,
 .currency__output {
+    background-color: var(--color-converter);
+    color: var(--color-text);
     box-shadow: 2px 6px 7px 1px rgba(176, 176, 176, 0.3);
     border: var(--border);
     border-radius: 8px;
@@ -127,8 +137,56 @@ h1, h2, h3, h4, h5, h6 {
     display: block;
 }
 
+.darkmode .currency__input,
+.currency__output {
+    color: var(--color-text-white);
+    box-shadow: 2px 6px 7px 1px rgba(0, 0, 0, 0.3);
+}
+
+.currency__input::-webkit-outer-spin-button,
+.currency__input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.currency__input[type="number"] {
+    -moz-appearance: textfield;
+}
+
 .currency__output {
     margin-top: 15px;
+}
+
+.currency__input-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.currency__spin-buttons {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    right: 5px;
+}
+
+.currency__spin-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 10px;
+    color: var(--color-border);
+    user-select: none;
+    border-radius: 4px;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.currency__spin-btn:hover {
+  color: var(--color-button);
 }
 
 .currency__list-wrapper {
@@ -145,6 +203,7 @@ h1, h2, h3, h4, h5, h6 {
     padding-right: 35px;
     color: var(--color-text);
     background-color: var(--color-select);
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='{COLOR}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234F46E5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
     background-repeat: no-repeat;
     background-position: right 13px center;
@@ -162,6 +221,10 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     cursor: pointer;
+}
+
+.darkmode .currency__select {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23659CA3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
 }
 
 .currency__actions {
