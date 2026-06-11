@@ -41,3 +41,11 @@ selectFromElement.addEventListener('change', () => {
 selectToElement.addEventListener('change', () => {
   makeRequest(selectFromElement.value, selectToElement.value, inputAmountElement.value)
 });
+
+function incrementValue() {
+  inputAmountElement.value++
+}
+
+function decrementValue() {
+  inputAmountElement.value--
+}
