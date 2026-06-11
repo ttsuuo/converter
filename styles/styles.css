@@ -8,3 +8,15 @@
     --color-swap: #E5E7EB;
     --color-button: #4F46E5;
 }
+
+.darkmode {
+    --color-background: #1F1F1F;
+    --color-converter: #262626;
+    --color-title: #B4B4B4;
+    --color-text: #959595;
+    --color-focus: #343434;
+    --color-border: #959595;
+    --color-swap: #343434;
+    --color-text-active: #FFFFFF;
+    --color-button: #659CA3;
+}
