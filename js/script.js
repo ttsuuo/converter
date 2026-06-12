@@ -47,7 +47,7 @@ function incrementValue() {
 }
 
 function decrementValue() {
-  inputAmountElement.value--
+  inputAmountElement.value = Math.max(0, inputAmountElement.value - 1)
 }
 
 const themeSwitchElement = document.querySelector('.theme-switch')
