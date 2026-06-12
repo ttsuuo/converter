@@ -2,6 +2,7 @@ const inputAmountElement = document.querySelector('.currency__input');
 const selectFromElement = document.querySelector('.currency__select--from');
 const selectToElement = document.querySelector('.currency__select--to');
 const outputResultElement = document.querySelector('.currency__output');
+const currencyButtonElement = document.querySelector('.currency__button')
 const api = "https://api.frankfurter.dev";
 
 function makeRequest (fromCurrency, toCurrency, inputValue) {
@@ -28,19 +29,13 @@ function makeRequest (fromCurrency, toCurrency, inputValue) {
       });
 }
 
-inputAmountElement.addEventListener('keydown', (event) => {
-  if (event.key === 'Enter') {
-    makeRequest(selectFromElement.value, selectToElement.value, event.target.value)
-  }
-});
-
-selectFromElement.addEventListener('change', () => {
+const updateConversion = () => {
   makeRequest(selectFromElement.value, selectToElement.value, inputAmountElement.value)
-});
+}
 
-selectToElement.addEventListener('change', () => {
-  makeRequest(selectFromElement.value, selectToElement.value, inputAmountElement.value)
-});
+currencyButtonElement.addEventListener('click', updateConversion)
+selectFromElement.addEventListener('change', updateConversion);
+selectToElement.addEventListener('change', updateConversion);
 
 function incrementValue() {
   inputAmountElement.value++
