@@ -51,6 +51,15 @@ function decrementValue() {
 currencySpinUpElement.addEventListener('click', incrementValue)
 currencySpinDownElement.addEventListener('click', decrementValue)
 
+const currencySwapElement = document.querySelector('.currency__swap-icon-wrapper')
+
+function swapCurrencies() {
+  [selectFromElement.value, selectToElement.value] = [selectToElement.value, selectFromElement.value];
+  makeRequest(selectFromElement.value, selectToElement.value, inputAmountElement.value);
+}
+
+currencySwapElement.addEventListener('click', swapCurrencies)
+
 const themeSwitchElement = document.querySelector('.theme-switch')
 
 if (localStorage.getItem('darkmode') === 'active') {
