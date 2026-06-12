@@ -37,6 +37,9 @@ currencyButtonElement.addEventListener('click', updateConversion)
 selectFromElement.addEventListener('change', updateConversion);
 selectToElement.addEventListener('change', updateConversion);
 
+const currencySpinUpElement = document.querySelector('.currency__spin-btn--up');
+const currencySpinDownElement = document.querySelector('.currency__spin-btn--down');
+
 function incrementValue() {
   inputAmountElement.value++
 }
@@ -44,6 +47,9 @@ function incrementValue() {
 function decrementValue() {
   inputAmountElement.value = Math.max(0, inputAmountElement.value - 1)
 }
+
+currencySpinUpElement.addEventListener('click', incrementValue)
+currencySpinDownElement.addEventListener('click', decrementValue)
 
 const themeSwitchElement = document.querySelector('.theme-switch')
 

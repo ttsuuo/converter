@@ -229,8 +229,31 @@ h1, h2, h3, h4, h5, h6 {
 .currency__list-wrapper {
     display: flex;
     justify-content: space-between;
+    align-items: end;
     margin-top: 15px;
-    gap: 55px;
+    gap: 85px;
+}
+
+.currency__swap-icon-wrapper {
+    height: 32px;
+    width: 32px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: var(--color-select);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+}
+
+.currency__swap-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.darkmode .currency__swap-icon path {
+    fill: var(--color-border);
 }
 
 .currency__select {
@@ -238,6 +261,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
     padding: 9px 13px;
     padding-right: 35px;
+    max-width: 168px;
     color: var(--color-text);
     background-color: var(--color-select);
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='{COLOR}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
