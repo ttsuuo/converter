@@ -49,3 +49,14 @@ function incrementValue() {
 function decrementValue() {
   inputAmountElement.value--
 }
+
+const themeSwitchElement = document.querySelector('.theme-switch')
+
+if (localStorage.getItem('darkmode') === 'active') {
+  document.body.classList.add('darkmode')
+}
+
+themeSwitchElement.addEventListener('click', () => {
+  const isDark = document.body.classList.toggle('darkmode')
+  localStorage.setItem('darkmode', isDark ? 'active' : 'inactive')
+})
