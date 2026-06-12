@@ -78,6 +78,43 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #72b4bd;
 }
 
+.theme-switch {
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: var(--color-converter);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    box-shadow: 9px 7px 7px -1px rgba(176, 176, 176, 0.3);
+}
+
+.darkmode .theme-switch {
+    box-shadow: 9px 7px 7px -1px rgba(0, 0, 0, 0.3);
+}
+
+.theme-switch svg {
+    fill: var(--color-title);
+}
+
+.theme-switch svg:last-child {
+    display: none;
+}
+
+.darkmode .theme-switch svg:first-child {
+    display: none;
+}
+
+.darkmode .theme-switch svg:last-child {
+    display: block;
+}
+
 .currency-converter {
     display: flex;
     justify-content: center;
