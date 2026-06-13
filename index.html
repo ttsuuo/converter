@@ -6,6 +6,8 @@
     <title>Конвертер валют</title>
     <link rel="stylesheet" href="./styles/styles.css">
     <link rel="stylesheet" href="./styles/normalize.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -65,6 +67,12 @@
 
             </div>
         
+        </section>
+
+        <section class="history-rates">
+            <div class="history-rates__wrapper">
+                <canvas id="historyChart" class="history-rates__chart"></canvas>
+            </div>
         </section>
 
     </div>

@@ -296,3 +296,17 @@ h1, h2, h3, h4, h5, h6 {
 .currency__button {
     margin-top: 25px;
 }
+
+.history-rates {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.history-rates__wrapper {
+    position: relative;
+    width: 80%;
+    max-width: 1000px;
+    height: 500px;
+    margin: 0 auto;
+}

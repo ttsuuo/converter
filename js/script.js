@@ -69,4 +69,111 @@ if (localStorage.getItem('darkmode') === 'active') {
 themeSwitchElement.addEventListener('click', () => {
   const isDark = document.body.classList.toggle('darkmode')
   localStorage.setItem('darkmode', isDark ? 'active' : 'inactive')
+  updateChartTheme()
 })
+
+let currencyChartInstance = null; 
+
+function fetchHistoricalRates(fromCurrency) {
+  const currentDate = new Date();
+  const pastDate = new Date();
+  pastDate.setMonth(pastDate.getMonth() - 1)
+
+  const formatDateForAPI = (date) => date.toISOString().split('T')[0];
+  const startDateStr = formatDateForAPI(pastDate);
+  const endDateStr = formatDateForAPI(currentDate);
+
+  fetch(`https://api.frankfurter.dev/v2/rates?from=${startDateStr}&to=${endDateStr}&quotes=${fromCurrency}`)
+  .then((response) => response.json())
+  .then((data) => {
+    const dates = data.map(item => item.date)
+    const rates = data.map(item => item.rate)
+    console.log(rates)
+    console.log(dates)
+    renderChart(dates,rates)
+  })
+  .catch((error) => {
+    console.error('Ошибка API:', error.message);
+  });
+}
+
+function getThemeColor(variableName) {
+  return getComputedStyle(document.body)
+    .getPropertyValue(variableName)
+    .trim();
+}
+
+function updateChartTheme() {
+  if (currencyChartInstance) {
+    const freshColor = getThemeColor('--color-button');
+    
+    currencyChartInstance.data.datasets[0].backgroundColor = freshColor;
+    currencyChartInstance.data.datasets[0].borderColor = freshColor;
+    
+    currencyChartInstance.update();
+  }
+}
+
+function renderChart(chartLabels, chartData) {
+  const ctx = document.getElementById('historyChart');
+  if (!ctx) return;
+
+  if (currencyChartInstance) {
+    currencyChartInstance.destroy();
+  }
+
+  const themeColor = getThemeColor('--color-button');
+
+  currencyChartInstance = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: chartLabels,
+      datasets: [{
+        label: 'Курс валют к EUR',
+        data: chartData,
+        backgroundColor: themeColor,
+        borderColor: themeColor,
+        borderWidth: 2,
+        fill: false,
+        pointRadius: 2
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        x: {
+          type: 'time',
+          time: {
+            unit: 'day',
+            tooltipFormat: 'dd.MM.yyyy',
+            displayFormats: {
+              day: 'dd.MM'
+            }
+          },
+          ticks: {
+            stepSize: 5
+          },
+          title: {
+            display: true,
+            text: 'Дата'
+          }
+        },
+        y: {
+          title: {
+            display: true,
+            text: 'Курс'
+          }
+        }
+      },
+      plugins: {
+        tooltip: {
+          intersect: false,
+          mode: 'index'
+        }
+      }
+    }
+  });
+}
+
+fetchHistoricalRates('USD');
