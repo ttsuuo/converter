@@ -69,16 +69,24 @@
         
         </section>
 
-        <section class="history-rates">
-            <div class="history-rates__wrapper">
-                <div id="chartLoading" class="chart-loading" style="display: none;">Загрузка...</div>
-                <canvas id="historyChart" class="history-rates__chart"></canvas>
+        <section class="history-section">
+            <div class="currency-chart">
+                <div class="currency-chart__wrapper">
+                    <div id="chartLoading" class="chart-loading" style="display: none;">Загрузка...</div>
+                    <canvas id="historyChart" class="currency-chart__chart"></canvas>
+                </div>
+                <select class="currency__select currency__select--history" name="currency">
+                    <option class="currency__option currency__option--history" value="USD">USD</option>
+                    <option class="currency__option currency__option--history" value="RUB">RUB</option>
+                    <option class="currency__option currency__option--history" value="BYN">BYN</option>
+                </select>
             </div>
-            <select class="currency__select currency__select--history" name="currency">
-                <option class="currency__option currency__option--history" value="USD">USD</option>
-                <option class="currency__option currency__option--history" value="RUB">RUB</option>
-                <option class="currency__option currency__option--history" value="BYN">BYN</option>
-            </select>
+            <div class="conversion-history">
+                <h3 class="conversion-history__title">Последние конвертации</h3>
+                <ul class="conversion-history__list">
+                    <li class="conversion-history__item">100 USD → 85 EUR</li>
+                </ul>
+            </div>
         </section>
 
     </div>

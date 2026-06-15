@@ -297,16 +297,20 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 25px;
 }
 
-.history-rates {
+.history-section {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    align-items: flex-start;
-    gap: 10px;
+    gap: 60px;
     margin: 80px 0;
 }
 
-.history-rates__wrapper {
+.currency-chart {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.currency-chart__wrapper {
     position: relative;
     width: 80%;
     max-width: 1000px;
