@@ -299,8 +299,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .history-rates {
     display: flex;
-    justify-content: center;
-    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 80px 0;
 }
 
 .history-rates__wrapper {
@@ -309,4 +312,9 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 1000px;
     height: 500px;
     margin: 0 auto;
+}
+
+.currency__select--history {
+    width: auto;
+    min-width: 120px;
 }

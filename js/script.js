@@ -74,7 +74,7 @@ themeSwitchElement.addEventListener('click', () => {
 
 let currencyChartInstance = null; 
 
-function fetchHistoricalRates(fromCurrency) {
+function fetchHistoricalRates(baseCurrency) {
   const currentDate = new Date();
   const pastDate = new Date();
   pastDate.setMonth(pastDate.getMonth() - 1)
@@ -83,7 +83,7 @@ function fetchHistoricalRates(fromCurrency) {
   const startDateStr = formatDateForAPI(pastDate);
   const endDateStr = formatDateForAPI(currentDate);
 
-  fetch(`https://api.frankfurter.dev/v2/rates?from=${startDateStr}&to=${endDateStr}&quotes=${fromCurrency}`)
+  fetch(`https://api.frankfurter.dev/v2/rates?from=${startDateStr}&to=${endDateStr}&quotes=${baseCurrency}`)
   .then((response) => response.json())
   .then((data) => {
     const dates = data.map(item => item.date)
@@ -176,4 +176,12 @@ function renderChart(chartLabels, chartData) {
   });
 }
 
-fetchHistoricalRates('USD');
+const updateCurrencyForChart = () => {
+  fetchHistoricalRates(historySelectElement.value)
+}
+
+const historySelectElement = document.querySelector('.currency__select--history')
+
+historySelectElement.addEventListener('change', updateCurrencyForChart)
+
+updateCurrencyForChart(); 
