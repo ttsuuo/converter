@@ -17,6 +17,9 @@ function makeRequest (fromCurrency, toCurrency, inputValue) {
     return;
   }
 
+  
+  outputResultElement.value = 'Загрузка...'
+
   fetch(`${api}/v2/rate/${fromCurrency}/${toCurrency}`)
       .then((response) => response.json())
       .then((data) => {
@@ -25,7 +28,7 @@ function makeRequest (fromCurrency, toCurrency, inputValue) {
       })
       .catch((error) => {
         console.error('Ошибка API:', error.message);
-        outputResultElement.value = 'Ошибка';
+        outputResultElement.value = 'Ошибка загрузки данных';
       });
 }
 
@@ -83,17 +86,25 @@ function fetchHistoricalRates(baseCurrency) {
   const startDateStr = formatDateForAPI(pastDate);
   const endDateStr = formatDateForAPI(currentDate);
 
+  const loadingChartElement = document.getElementById('chartLoading')
+  const historyCanvasElement = document.getElementById('historyChart');
+  if (loadingChartElement) loadingChartElement.style.display = 'block'
+  if (historyCanvasElement) historyCanvasElement.style.opacity = '0.3'
+
   fetch(`https://api.frankfurter.dev/v2/rates?from=${startDateStr}&to=${endDateStr}&quotes=${baseCurrency}`)
   .then((response) => response.json())
   .then((data) => {
     const dates = data.map(item => item.date)
     const rates = data.map(item => item.rate)
-    console.log(rates)
-    console.log(dates)
+    
+    if (loadingChartElement) loadingChartElement.style.display = 'none';
+    if (historyCanvasElement) historyCanvasElement.style.opacity = '1'
+
     renderChart(dates,rates)
   })
   .catch((error) => {
     console.error('Ошибка API:', error.message);
+    if (loadingChartElement) loadingChartElement.innerText = 'Ошибка загрузки данных'
   });
 }
 
