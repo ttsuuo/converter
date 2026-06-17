@@ -301,26 +301,29 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     gap: 60px;
     margin: 80px 0;
+    align-items: flex-start;
 }
 
 .currency-chart {
+    flex: 1;
     display: flex;
-    justify-content: flex-end;
+    min-width: 0;
+    overflow: hidden;
     align-items: flex-start;
     gap: 10px;
 }
 
 .currency-chart__wrapper {
     position: relative;
-    width: 80%;
-    max-width: 1000px;
+    width: 100%;
+    max-width: 100%; 
     height: 500px;
-    margin: 0 auto;
 }
 
 .currency__select--history {
     width: auto;
     min-width: 120px;
+    margin-bottom: 10px;
 }
 
 .chart-loading {
@@ -332,4 +335,85 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
     color: var(--color-title);
     z-index: 10;
+}
+
+.conversion-history {
+    width: 280px;
+    flex-shrink: 0;
+}
+
+.currency__wrapper--history {
+    max-width: 265px;
+}
+
+.conversion-history__top {
+    display: flex;
+}
+
+.conversion-history__clear-all {
+    cursor: pointer;
+    color: var(--color-border);
+    transition: var(--transition-duration);
+}
+
+.conversion-history__clear-all:hover {
+    color: var(--color-button);
+}
+
+.conversion-history__title {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 16px 0;
+    color: var(--color-title);
+}
+
+.conversion-history__list {
+    list-style: none;
+    padding: 0;
+    font-size: 16px;
+}
+
+.hidden {
+    display: none;
+}
+
+.conversion-history__item {
+    padding: 10px 0;
+    color: var(--color-text);
+    transition: var(--transition-duration);
+    cursor: pointer;
+}
+
+.conversion-history__item:not(:last-child) {
+    border-bottom: var(--border);
+}
+
+.conversion-history__item:hover {
+   background-color: #f3f3f3;
+}
+
+.darkmode .conversion-history__item:hover {
+   background-color: #575757;
+}
+
+.conversion-history__empty {
+    color: var(--color-text);
+}
+
+.conversion-history__item-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.conversion-history__arrow {
+    color: var(--color-button);
+}
+
+.conversion-history__delete-btn {
+    color: var(--color-border);
+    transition: var(--transition-duration);
+}
+
+.conversion-history__delete-btn:hover {
+    color: var(--color-button);
 }

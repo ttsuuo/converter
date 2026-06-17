@@ -18,7 +18,7 @@ function makeRequest (fromCurrency, toCurrency, inputValue) {
   }
 
   
-  outputResultElement.value = 'Загрузка...'
+  // outputResultElement.value = 'Загрузка...' 
 
   fetch(`${api}/v2/rate/${fromCurrency}/${toCurrency}`)
       .then((response) => response.json())
@@ -39,6 +39,85 @@ const updateConversion = () => {
 currencyButtonElement.addEventListener('click', updateConversion)
 selectFromElement.addEventListener('change', updateConversion);
 selectToElement.addEventListener('change', updateConversion);
+
+const dynamicHistoryList = document.querySelector('.conversion-history__list--dynamic')
+const originalHistoryList = document.querySelector('.conversion-history__list--original')
+const historyItemElement = document.querySelector('.conversion-history__item')
+const clearAllButton = document.querySelector('.conversion-history__clear-all')
+const deleteButton = document.querySelector('.conversion-history__delete-btn')
+
+const savedNewElements = JSON.parse(localStorage.getItem('currenciesList') || '[]');
+
+if (savedNewElements.length > 0) {
+  originalHistoryList.classList.add('hidden')
+} else {
+  originalHistoryList.classList.remove('hidden')
+}
+
+function saveCurrencies () {
+  originalHistoryList.classList.add('hidden')
+  const currencies = JSON.parse(localStorage.getItem('currenciesList')) || []
+
+  currencies.push({ id: 'id-' + Date.now() + '-' + Math.floor(Math.random() * 1000), fromCurrency: `${inputAmountElement.value} ${selectFromElement.value}`, toCurrency: `${outputResultElement.value} ${selectToElement.value}`});
+
+  localStorage.setItem('currenciesList', JSON.stringify(currencies))
+
+  renderCurrencyList()
+}
+
+function renderCurrencyList() {
+  const currenciesArr = JSON.parse(localStorage.getItem('currenciesList') || '[]').slice(-5)
+  let currencyListContent = '';
+  for (const {id, fromCurrency, toCurrency} of currenciesArr) {
+    currencyListContent += `<li class="conversion-history__item" data-id="${id}">
+                              <div class="conversion-history__item-content">
+                                <span class="conversion-history__text">${fromCurrency} <span class="conversion-history__arrow">&#10142;</span> ${toCurrency}</span>
+                                <span class="conversion-history__delete-btn">&#10005;</span>
+                              </div>
+                            </li>`
+  }
+
+  dynamicHistoryList.innerHTML = currencyListContent
+}
+
+function clearAllList() {
+  const keys = Object.keys(localStorage);
+
+  console.log(keys)
+  keys.forEach(key => {
+    if (key !== 'darkmode') {
+      localStorage.removeItem(key)
+    }
+  })
+
+  if (dynamicHistoryList) {
+    dynamicHistoryList.innerHTML = '';
+  }
+
+  originalHistoryList.classList.remove('hidden')
+}
+
+currencyButtonElement.addEventListener('click', saveCurrencies)
+clearAllButton.addEventListener('click', clearAllList)
+
+dynamicHistoryList.addEventListener('click', (event) => {
+  if (event.target.classList.contains('conversion-history__delete-btn')) {
+    const item = event.target.closest('.conversion-history__item')
+    const idToRemove = item.getAttribute('data-id')
+
+    let currenciesArr = JSON.parse(localStorage.getItem('currenciesList') || '[]');
+
+    currenciesArr = currenciesArr.filter(curr => String(curr.id) !== idToRemove);
+
+    localStorage.setItem('currenciesList', JSON.stringify(currenciesArr));
+
+    renderCurrencyList();
+
+    if (dynamicHistoryList.children.length === 0) {
+      originalHistoryList.classList.remove('hidden')
+    }
+  }
+})
 
 const currencySpinUpElement = document.querySelector('.currency__spin-btn--up');
 const currencySpinDownElement = document.querySelector('.currency__spin-btn--down');

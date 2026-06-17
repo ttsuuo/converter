@@ -82,10 +82,17 @@
                 </select>
             </div>
             <div class="conversion-history">
-                <h3 class="conversion-history__title">Последние конвертации</h3>
-                <ul class="conversion-history__list">
-                    <li class="conversion-history__item">100 USD → 85 EUR</li>
-                </ul>
+                <div class="currency__wrapper currency__wrapper--history">
+                    <div class="conversion-history__top">
+                        <h3 class="conversion-history__title">Последние конвертации</h3>
+                        <span class="conversion-history__clear-all">&#10005;</span>
+                    </div>
+                    <ul class="conversion-history__list conversion-history__list--original">
+                        <li class="conversion-history__empty">Начните конвертировать...</li>
+                    </ul>
+                    <ul class="conversion-history__list conversion-history__list--dynamic">
+                    </ul>
+                </div>
             </div>
         </section>
 
