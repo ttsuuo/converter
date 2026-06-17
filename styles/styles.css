@@ -125,6 +125,8 @@ h1, h2, h3, h4, h5, h6 {
 .currency__wrapper {
     box-sizing: border-box;
     max-width: 576px;
+    width: 100%;
+    min-width: 350px;
     padding-inline: 20px;
     padding-top: 30px;
     padding-bottom: 20px;
@@ -231,7 +233,7 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: space-between;
     align-items: end;
     margin-top: 15px;
-    gap: 85px;
+    gap: 10px;
 }
 
 .currency__swap-icon-wrapper {
@@ -261,7 +263,9 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
     padding: 9px 13px;
     padding-right: 35px;
+    width: 100%;
     max-width: 168px;
+    min-width: 0;
     color: var(--color-text);
     background-color: var(--color-select);
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='{COLOR}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
@@ -302,22 +306,22 @@ h1, h2, h3, h4, h5, h6 {
     gap: 60px;
     margin: 80px 0;
     align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 .currency-chart {
-    flex: 1;
+    flex: 1 1 715px; 
     display: flex;
     min-width: 0;
-    overflow: hidden;
     align-items: flex-start;
     gap: 10px;
 }
 
 .currency-chart__wrapper {
     position: relative;
-    width: 100%;
-    max-width: 100%; 
+    width: 100%; 
     height: 500px;
+    min-width: 375px;
 }
 
 .currency__select--history {
@@ -340,20 +344,23 @@ h1, h2, h3, h4, h5, h6 {
 .conversion-history {
     width: 280px;
     flex-shrink: 0;
+    flex-grow: 1; 
 }
 
 .currency__wrapper--history {
-    max-width: 265px;
+    max-width: 100%;
 }
 
 .conversion-history__top {
     display: flex;
+    justify-content: space-between;
 }
 
 .conversion-history__clear-all {
     cursor: pointer;
     color: var(--color-border);
     transition: var(--transition-duration);
+    font-size: 20px;
 }
 
 .conversion-history__clear-all:hover {
@@ -416,4 +423,67 @@ h1, h2, h3, h4, h5, h6 {
 
 .conversion-history__delete-btn:hover {
     color: var(--color-button);
+}
+
+@media (max-width: 768px) {
+    .container {
+        --container-padding-x: 40px;
+        padding-right: 70px;
+    }
+
+    .button:hover {
+        background-color: var(--color-button);
+    }
+
+    .button:active {
+        background-color: rgb(99, 81, 238);
+    }
+
+    .darkmode .button:active {
+        background-color: #72b4bd;
+    }
+
+    .theme-switch {
+        height: 40px;
+        width: 40px;
+        top: 15px;
+        right: 20px;
+    }
+
+    .currency__spin-btn:hover {
+        color: var(--color-border);
+    }
+
+    .currency__spin-btn:active {
+        color: var(--color-button);
+    }
+
+    .conversion-history__clear-all:hover {
+        color: var(--color-border);
+    }
+
+    .conversion-history__clear-all:active {
+        color: var(--color-button);
+    }
+
+    .conversion-history__item:hover {
+        background-color: var(--color-converter);
+    }
+
+    .conversion-history__item:active {
+        background-color: #f3f3f3;
+    }
+
+    .darkmode .conversion-history__item:active {
+        background-color: #575757;
+    }
+
+    .conversion-history__delete-btn:hover {
+        color: var(--color-border);
+    }
+
+    .conversion-history__delete-btn:active {
+        color: var(--color-button);
+    }
+
 }
