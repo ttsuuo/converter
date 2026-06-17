@@ -487,3 +487,27 @@ h1, h2, h3, h4, h5, h6 {
     }
 
 }
+
+@media (max-width: 576px) {
+    .currency__wrapper {
+        min-width: 300px;
+    }
+
+    .currency-chart {
+        flex: 1 1 466px;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .currency__select--history {
+        width: 100%;
+    }
+
+    .currency__wrapper--history {
+        max-width: 100%;
+    }
+
+    .currency-chart__wrapper {
+        min-width: 300px;
+    }
+}
