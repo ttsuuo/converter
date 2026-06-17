@@ -119,6 +119,8 @@ dynamicHistoryList.addEventListener('click', (event) => {
   }
 })
 
+renderCurrencyList()
+
 const currencySpinUpElement = document.querySelector('.currency__spin-btn--up');
 const currencySpinDownElement = document.querySelector('.currency__spin-btn--down');
 
