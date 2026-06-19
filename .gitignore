@@ -1,0 +1,19 @@
+# Системные файлы
+.DS_Store
+Thumbs.db
+
+# Настройки редактора
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Логи
+*.log
+npm-debug.log*
+
+# Если в будущем добавите зависимости
+node_modules/
+dist/
+build/
+.env
