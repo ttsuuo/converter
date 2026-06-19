@@ -601,3 +601,61 @@ h1, h2, h3, h4, h5, h6 {
         height: 13px;
     }
 }
+
+@media (max-width: 320px) {
+    .button {
+        height: 35px;
+        padding: 8px 16px;
+        font-size: 11px;
+    }
+
+    .currency__title {
+        font-size: 19px;
+    }
+
+    .currency__input, .currency__output {
+        font-size: 13px;
+    }
+
+    .currency__select {
+        font-size: 11px;
+    }
+
+    .currency__swap-icon-wrapper {
+        height: 29px;
+        width: 29px;
+    }
+
+    .currency__swap-icon {
+        width: 14px;
+        height: 14px;
+    }
+
+    .currency__button {
+        margin-top: 20px;
+    }
+
+    .history-section {
+        margin: 35px 0;
+    }
+
+    .currency-chart__wrapper {
+        height: 230px;
+    }
+
+    .currency__wrapper--history {
+        margin-top: 0;
+    }
+
+    .conversion-history__title {
+        font-size: 16px;
+    }
+
+    .conversion-history__clear-all {
+        font-size: 15px;
+    }
+
+    .conversion-history__list {
+        font-size: 12px;
+    }
+}
