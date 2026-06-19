@@ -13,8 +13,12 @@ inputAmountElement.addEventListener('input', (event) => {
   }
 })
 
-inputAmountElement.addEventListener('focus', () => {
-  inputAmountElement.value = ''
+inputAmountElement.addEventListener('click', function(event) {
+  this.select();
+
+  if (event.target.setSelectionRange) {
+    event.preventDefault()
+  }
 })
 
 inputAmountElement.addEventListener('beforeinput', (event) => {
