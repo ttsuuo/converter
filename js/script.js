@@ -13,6 +13,10 @@ inputAmountElement.addEventListener('input', (event) => {
   }
 })
 
+inputAmountElement.addEventListener('focus', () => {
+  inputAmountElement.value = ''
+})
+
 function makeRequest (fromCurrency, toCurrency, inputValue) {
   let amount = parseFloat(inputValue);
   
