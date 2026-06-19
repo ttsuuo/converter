@@ -92,6 +92,7 @@ h1, h2, h3, h4, h5, h6 {
     top: 20px;
     right: 20px;
     cursor: pointer;
+    z-index: 100;
     box-shadow: 9px 7px 7px -1px rgba(176, 176, 176, 0.3);
 }
 
@@ -262,7 +263,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 16px;
     font-weight: 400;
     padding: 9px 13px;
-    padding-right: 35px;
+    padding-right: 100px;
     width: 100%;
     max-width: 168px;
     min-width: 0;
@@ -328,6 +329,7 @@ h1, h2, h3, h4, h5, h6 {
     width: auto;
     min-width: 120px;
     margin-bottom: 10px;
+    padding-right: 0;
 }
 
 .chart-loading {
@@ -499,6 +501,10 @@ h1, h2, h3, h4, h5, h6 {
         flex-direction: column;
     }
 
+    .currency__select {
+        padding-right: 65px;
+    }
+
     .currency__select--history {
         width: 100%;
     }
@@ -509,5 +515,69 @@ h1, h2, h3, h4, h5, h6 {
 
     .currency-chart__wrapper {
         min-width: 300px;
+    }
+}
+
+@media (max-width: 425.98px) {
+    .container {
+        --container-padding-x: 15px;
+        padding-right: 15px;
+    }
+
+    .button {
+        font-size: 13px;
+    }
+
+    .theme-switch {
+        right: 15px;
+    }
+    
+    .currency__wrapper {
+        margin-top: 55px;
+    }
+
+    .currency__title {
+        font-size: 21px;
+    }
+
+    .currency__label {
+        font-size: 11px;
+    }
+
+    .currency__input, .currency__output {
+        font-size: 15px;
+    }
+
+    .currency__select {
+        font-size: 13px;
+    }
+
+    .currency__swap-icon-wrapper {
+        height: 29px;
+    }
+
+    .currency__swap-icon {
+        width: 14px;
+        height: 14px;
+    }
+
+    .currency-chart__wrapper {
+        height: 300px;
+    }
+
+    .currency__wrapper--history {
+        margin-top: 15px;
+    }
+
+    .conversion-history__title {
+        font-size: 18px;
+    }
+
+    .conversion-history__clear-all {
+        font-size: 17px;
+    }
+
+    .conversion-history__list {
+        font-size: 14px;
     }
 }
