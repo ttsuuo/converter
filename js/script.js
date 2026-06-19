@@ -30,12 +30,13 @@ function makeRequest (fromCurrency, toCurrency, inputValue) {
   }
 
   
-  // outputResultElement.value = 'Загрузка...' 
+  outputResultElement.value = 'Загрузка...' 
 
   return fetch(`${api}/v2/rate/${fromCurrency}/${toCurrency}`)
       .then((response) => response.json())
       .then((data) => {
-        let result = (amount * data.rate).toFixed(2);
+         const spaceFormatter = new Intl.NumberFormat('fr-FR')
+        let result = spaceFormatter.format((amount * data.rate).toFixed(2));
         outputResultElement.value = result;
       })
       .catch((error) => {
