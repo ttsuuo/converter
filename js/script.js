@@ -5,6 +5,14 @@ const outputResultElement = document.querySelector('.currency__output');
 const currencyButtonElement = document.querySelector('.currency__button')
 const api = "https://api.frankfurter.dev";
 
+inputAmountElement.addEventListener('input', (event) => {
+  const regex = /^(\d+)\.(\d{2})\d+/;
+  
+  if (regex.test(event.target.value)) {
+    event.target.value = event.target.value.replace(regex, '$1.$2');
+  }
+})
+
 function makeRequest (fromCurrency, toCurrency, inputValue) {
   let amount = parseFloat(inputValue);
   
