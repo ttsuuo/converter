@@ -103,7 +103,6 @@ function renderCurrencyList() {
 function clearAllList() {
   const keys = Object.keys(localStorage);
 
-  console.log(keys)
   keys.forEach(key => {
     if (key !== 'darkmode') {
       localStorage.removeItem(key)
