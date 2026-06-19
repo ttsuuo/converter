@@ -14,13 +14,13 @@ function makeRequest (fromCurrency, toCurrency, inputValue) {
 
   if (fromCurrency === toCurrency) {
     outputResultElement.value = amount.toFixed(2);
-    return;
+    return Promise.resolve();
   }
 
   
   // outputResultElement.value = 'Загрузка...' 
 
-  fetch(`${api}/v2/rate/${fromCurrency}/${toCurrency}`)
+  return fetch(`${api}/v2/rate/${fromCurrency}/${toCurrency}`)
       .then((response) => response.json())
       .then((data) => {
         let result = (amount * data.rate).toFixed(2);
@@ -32,13 +32,14 @@ function makeRequest (fromCurrency, toCurrency, inputValue) {
       });
 }
 
-const updateConversion = () => {
-  makeRequest(selectFromElement.value, selectToElement.value, inputAmountElement.value)
+const handleConversionAndSave = async() => {
+  await makeRequest(selectFromElement.value, selectToElement.value, inputAmountElement.value)
+  saveCurrencies()
 }
 
-currencyButtonElement.addEventListener('click', updateConversion)
-selectFromElement.addEventListener('change', updateConversion);
-selectToElement.addEventListener('change', updateConversion);
+currencyButtonElement.addEventListener('click', handleConversionAndSave)
+selectFromElement.addEventListener('change', handleConversionAndSave)
+selectToElement.addEventListener('change', handleConversionAndSave)
 
 const dynamicHistoryList = document.querySelector('.conversion-history__list--dynamic')
 const originalHistoryList = document.querySelector('.conversion-history__list--original')
@@ -97,7 +98,6 @@ function clearAllList() {
   originalHistoryList.classList.remove('hidden')
 }
 
-currencyButtonElement.addEventListener('click', saveCurrencies)
 clearAllButton.addEventListener('click', clearAllList)
 
 dynamicHistoryList.addEventListener('click', (event) => {
