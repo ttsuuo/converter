@@ -581,3 +581,23 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 14px;
     }
 }
+
+@media (max-width: 375.98px) {
+    .container {
+        --container-padding-x: 10px;
+        padding-right: 10px;
+    }
+
+    .theme-switch {
+        right: 10px;
+    }
+
+    .currency__swap-icon-wrapper {
+        height: 32px;
+    }
+
+    .currency__swap-icon {
+        width: 13px;
+        height: 13px;
+    }
+}
